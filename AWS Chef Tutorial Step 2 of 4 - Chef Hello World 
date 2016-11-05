@@ -1,0 +1,26 @@
+https://learn.chef.io/tutorials/learn-the-basics/rhel/aws/configure-a-resource/
+
+Use local Chef to update a Message of the Day file in the /tmp dir
+
+1. create a chef working directory to put your chef recipes files on the ec2 server
+mkdir ~/chef-repo
+cd ~/chef-repo
+
+2. Create a recipe file in the working directory on your ec2
+
+touch hello.rb
+vi/emacs/nano hello.rb
+copy and paste the below code
+
+file '/tmp/motd' do
+  content 'hello world'
+end
+
+
+3. Run the chef client command on the ec2 server
+chef-client --local-mode hello.rb
+
+4. Run the more command on your EC2 to view your newly created file
+more /tmp/motd
+
+
