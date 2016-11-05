@@ -1,0 +1,28 @@
+Notes From https://learn.chef.io/tutorials/learn-the-basics/rhel/aws/set-up-a-machine-to-manage/
+
+Setup an AWS instance and deploy local Chef Client/Dev Kit
+
+1a. Create security group create Allow rules for ports 80/443/22 from your <WAN.IP>/32
+
+1. Create an EC2 instance in AWS
+CentOS 7 on Amazon Web Services
+Region: us-east-1
+AMI ID: ami-6d1c2007
+Instance type: t2.micro
+Assign the machine an EIP or Public IP
+Use the Security group created from step 1a 
+Select your SSH key or create one 
+
+2. Install teh Chef Dev Kit on your local computer - Required if you are running Windows client computer for git and ssh
+Install Chef Dev Kit Windows from powershell on your
+. { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chefdk -channel stable -version 0.16.28
+*Note: Mac client will use native terminal and SSH client from command line
+
+
+3. SSH into your newly created EC2 instance from Step 1
+SSH to your Linux Test server
+ssh -i /path/to/your/ec2/key centos@<Instance EIP/Public IP>
+
+4.Install Chef Dev Kit on LInux Test Server
+From the SSH prompt run the below command
+curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable -v 0.16.28
