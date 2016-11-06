@@ -10,46 +10,46 @@ Notes and instructions on how to learn Chef using AWS EC2 as the example node
 aws ec2 create-security-group --group-name chef-test --description "Chef Test" --vpc-id vpc-31XXXX4
             
 
-//add inbound rule to security group 
-//Input: SG id, protocol, port, and CIDR
-//Output: json 
-aws ec2 authorize-security-group-ingress --group-name chef-test --protocol tcp --port 22 --cidr YOURwanIP/32
-aws ec2 authorize-security-group-ingress --group-name chef-test --protocol tcp --port 80 --cidr YOURwanIP/32
-aws ec2 authorize-security-group-ingress --group-name chef-test --protocol tcp --port 443 --cidr YOURwanIP/32
+//add inbound rule to security group <br>
+//Input: SG id, protocol, port, and CIDR<br>
+//Output: json <br>
+aws ec2 authorize-security-group-ingress --group-name chef-test --protocol tcp --port 22 --cidr YOURwanIP/32<br>
+aws ec2 authorize-security-group-ingress --group-name chef-test --protocol tcp --port 80 --cidr YOURwanIP/32<br>
+aws ec2 authorize-security-group-ingress --group-name chef-test --protocol tcp --port 443 --cidr YOURwanIP/32<br>
 
 
-//Describe a security group 
-//Input: SG id
-//Output: json        
+//Describe a security group <br>
+//Input: SG id<br>
+//Output: json <br>
 aws ec2 describe-security-groups --group-ids sg-0XXXXX5
 
 
-//Create EIP
-//Input: 
-//Output: json - EIP id
+//Create EIP<br>
+//Input: <br>
+//Output: json - EIP id<br>
 aws ec2 allocate-address --domain vpc
 
 
-//Create EC2 - (be sure to run aws config and set region to us-east-1)
-//Input: aim(chef test linux), instance count, type, aws keypair name, security groups, subnet
-//Output: json - of EC2 data
+//Create EC2 - (be sure to run aws config and set region to us-east-1)<br>
+//Input: aim(chef test linux), instance count, type, aws keypair name, security groups, subnet<br>
+//Output: json - of EC2 data<br>
 aws ec2 run-instances --image-id ami-6d1c2007 --count 1 --instance-type t2.micro --key-name KEYPAIR --security-group-ids sg-0XXXXX5 --subnet-id subnet-XXXXXXX
 
 
-//Attach EIP
-//Input: instance id, and EIP id
-//Output: json - EIP association id
+//Attach EIP<br>
+//Input: instance id, and EIP id<br>
+//Output: json - EIP association id<br>
 aws ec2 associate-address --instance-id i-XXXXXXXXXXXXXX --allocation-id eipalloc-XXXXXXX
 
 
-// SSH Login 
+// SSH Login <br>
 ssh -i /Users/dir/Downloads/keyfile.pem centos@ec2-XX-XX-XX-XX.compute-1.amazonaws.com
 
 
-//Chef Dev Install
+//Chef Dev Install<br>
 curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable -v 0.16.28
 
-//Create Chef Working Directory for your code in the home directory
+//Create Chef Working Directory for your code in the home directory<br>
 mkdir ~/chef-repo
 cd ~/chef-repo
 
