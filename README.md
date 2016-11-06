@@ -68,8 +68,8 @@ cd ~/chef-repo
 ```
 vi hello.rb
 ```
-```rb
 PASTE INTO FILE:
+```rb
 file '/tmp/motd' do
   content 'hello world'
 end
@@ -85,8 +85,8 @@ more /etc/motd
 ```
 vi goodbye.rb
 ```
-```rb
 PASTE INTO FILE:
+```rb
 file '/tmp/motd' do
   action :delete
 end
@@ -103,8 +103,8 @@ more /etc/motd
 ```
 vi webserver.rb
 ```
+PASTE INTO FILE:
 ```rb
-PASTE in FILE:
 package 'httpd'
 
 service 'httpd' do
@@ -150,6 +150,7 @@ chef generate template cookbooks/learn_chef_httpd index.html
 ```
 
 //text edit to update index.html.erb in cookbook directory /learn_chef_httpd/templates
+PASTE INTO FILE:
 ```html
 <html>
   <body>
@@ -161,6 +162,7 @@ chef generate template cookbooks/learn_chef_httpd index.html
 
 
 //text edit to update default.rb in cookbook directory /learn_chef_httpd/recipes
+PASTE INTO FILE:
 ```rb
 package 'httpd'
 
