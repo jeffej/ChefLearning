@@ -13,12 +13,6 @@ Assign the machine an EIP or Public IP
 Use the Security group created from step 1a 
 Select your SSH key or create one 
 
-2. Install teh Chef Dev Kit on your local computer - Required if you are running Windows client computer for git and ssh
-Install Chef Dev Kit Windows from powershell on your
-. { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chefdk -channel stable -version 0.16.28
-*Note: Mac client will use native terminal and SSH client from command line
-
-
 3. SSH into your newly created EC2 instance from Step 1
 SSH to your Linux Test server
 ssh -i /path/to/your/ec2/key centos@<Instance EIP/Public IP>
