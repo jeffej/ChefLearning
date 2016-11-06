@@ -5,6 +5,8 @@ Notes and instructions on how to learn Chef using AWS EC2 as the example node
 (AWS CLI required)
 
 <br>
+<br>
+## Create AWS resources
 ### STEP 1
 //Create a Security Group <br>
 //Input: group name, description, VPC id <br>
@@ -61,20 +63,22 @@ aws ec2 associate-address --instance-id i-XXXXXXXXXXXXXX --allocation-id eipallo
 ssh -i /Users/dir/keyfile.pem centos@ec2-XX-XX-XX-XX.compute-1.amazonaws.com
 ```
 <br>
-### STEP 8
+<br>
+## Start using Chef
+### STEP 1
 //Chef Dev Install<br>
 ```
 curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable -v 0.16.28
 ```
 <br>
-### STEP 9
+### STEP 2
 //Create Chef Working Directory for your code in the home directory<br>
 ```
 mkdir ~/chef-repo
 cd ~/chef-repo
 ```
 <br>
-### STEP 10
+### STEP 3
 //Chef Reource - Create Hello Word File - use a text edit vi/emacs/nano etc
 ```
 vi hello.rb
@@ -87,7 +91,7 @@ end
 ```
 
 <br>
-### STEP 11
+### STEP 4
 //run chef locally 
 ```
 sudo chef-client --local-mode hello.rb 
@@ -95,7 +99,7 @@ more /etc/motd
 ```
 
 <br>
-### STEP 12
+### STEP 5
 //Chef Reource - Delete Hello Word File - use a text edit vi/emacs/nano etc
 ```
 vi goodbye.rb
@@ -108,7 +112,7 @@ end
 ```
 
 <br>
-### STEP 13
+### STEP 6
 //run chef locally
 ```
 sudo chef-client --local-mode goodbye.rb 
@@ -116,7 +120,7 @@ more /etc/motd
 ```
 
 <br>
-### STEP 14
+### STEP 7
 //Chef Package - Install HTTP - Start service and chkcnf ON - Create HTML file - use a text edit vi/emacs/nano etc
 ```
 vi webserver.rb
@@ -139,19 +143,19 @@ end
 ```
 
 <br>
-### STEP 15
+### STEP 8
 //run chef locally (make sure you run as root)
 ```
 sudo chef-client --local-mode webserver.rb 
 ```
 
 <br>
-### STEP 16
+### STEP 9
 //open the browser and point the EIP 
 http://EIP
 
 <br>
-### STEP 17
+### STEP 10
 //Create a directory for your chef cookbooks 
 ```
 cd ~/chef-repo
@@ -159,28 +163,28 @@ mkdir cookbooks
 ```
 
 <br>
-### STEP 18
+### STEP 11
 //run chef command to get a cookbook named learn_chef_httpd
 ```
 chef generate cookbook cookbooks/learn_chef_httpd
 ```
 
 <br>
-### STEP 19
+### STEP 12
 //explore the Chef cookbook directory structure (if you dont have tree installed - sudo yum install tree -y)
 ```
 tree cookbooks
 ```
 
 <br>
-### STEP 20
+### STEP 13
 //Create a index.html in your cookbook structure (index.html.erb is created under /learn_chef_httpd/templates)
 ```
 chef generate template cookbooks/learn_chef_httpd index.html
 ```
 
 <br>
-### STEP 21
+### STEP 14
 //text edit to update index.html.erb in cookbook directory /learn_chef_httpd/templates
 PASTE INTO FILE:
 ```html
@@ -193,7 +197,7 @@ PASTE INTO FILE:
 
 
 <br>
-### STEP 22
+### STEP 15
 //text edit to update default.rb in cookbook directory /learn_chef_httpd/recipes
 PASTE INTO FILE:
 ```rb
@@ -209,14 +213,14 @@ end
 ```
 
 <br>
-### STEP 23
+### STEP 16
 //run the chef cookbook
 ```
 sudo chef-client --local-mode --runlist 'recipe[learn_chef_httpd]'
 ```
 
 <br>
-### STEP 24
+### STEP 17
 //open the browser and point the EIP 
 http://EIP
 
