@@ -67,7 +67,8 @@ cd ~/chef-repo
 //Chef Reource - Create Hello Word File - use a text edit vi/emacs/nano etc
 ```
 vi hello.rb
-
+```
+```rb
 PASTE INTO FILE:
 file '/tmp/motd' do
   content 'hello world'
@@ -83,7 +84,8 @@ more /etc/motd
 //Chef Reource - Delete Hello Word File - use a text edit vi/emacs/nano etc
 ```
 vi goodbye.rb
-
+```
+```rb
 PASTE INTO FILE:
 file '/tmp/motd' do
   action :delete
@@ -100,7 +102,8 @@ more /etc/motd
 //Chef Package - Install HTTP - Start service and chkcnf ON - Create HTML file - use a text edit vi/emacs/nano etc
 ```
 vi webserver.rb
-
+```
+```rb
 PASTE in FILE:
 package 'httpd'
 
