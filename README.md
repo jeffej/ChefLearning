@@ -4,9 +4,9 @@ This is a public GIThub repo to allow everyone view access but only Jeff and Sco
 Notes and instructions on how to learn Chef using AWS EC2 as the example node 
 (AWS CLI required)
 
-//Create a Security Group
-//Input: group name, description, VPC id 
-//Output: json  - SG-1234abcd
+//Create a Security Group <br>
+//Input: group name, description, VPC id <br>
+//Output: json  - SG-1234abcd<br>
 aws ec2 create-security-group --group-name chef-test --description "Chef Test" --vpc-id vpc-31XXXX4
             
 
