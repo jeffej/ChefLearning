@@ -111,12 +111,13 @@ chef generate template cookbooks/learn_chef_httpd index.html
 
 
 //text edit to update index.html.erb in cookbook directory /learn_chef_httpd/templates
+<!--
 <html>
   <body>
     <h1>hello world - cookbook</h1>
   </body>
 </html>
-
+-->
 
 //text edit to update default.rb in cookbook directory /learn_chef_httpd/recipes
 package 'httpd'
