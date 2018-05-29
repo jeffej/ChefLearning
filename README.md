@@ -6,8 +6,8 @@ Notes and instructions on how to learn Chef using AWS EC2 as the example node
 
 <br>
 <br>
-## Create AWS resources
-### STEP 1
+Create AWS resources
+STEP 1
 //Create a Security Group <br>
 //Input: group name, description, VPC id <br>
 //Output: json  - SG-1234abcd<br>
